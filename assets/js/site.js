@@ -89,68 +89,21 @@
   var del = document.getElementById("delete-form");
   if (del) wireForm(del, "/delete-request", "Request received. We'll delete your account and data within 30 days and confirm by email.");
 
-  // ── Invite page: /u/123 ──────────────────────────────────────────
+
+  // ── Invite page: /u/123 (no player data shown; the app opens the profile) ──
   var invite = document.getElementById("invite");
   if (invite) {
     var m = location.pathname.match(/^\/u\/(\d{1,12})\/?$/);
     var id = m ? m[1] : null;
-    var nameEl = document.getElementById("invite-name");
-    var subEl = document.getElementById("invite-sub");
-    var avEl = document.getElementById("invite-avatar");
-    var statsEl = document.getElementById("invite-stats");
-    var openBtn = document.getElementById("invite-open");
     var getBtn = document.getElementById("invite-get");
-
+    var openBtn = document.getElementById("invite-open");
     if (getBtn) getBtn.href = PLAY + (id ? "&referrer=" + encodeURIComponent("utm_source=invite&utm_content=u" + id) : "");
-
-    if (!id) {
-      nameEl.textContent = "Invite not found";
-      subEl.textContent = "This link looks broken. You can still get Langas below.";
-      if (openBtn) openBtn.style.display = "none";
-      var txt = document.getElementById("invite-text");
-      if (txt) txt.style.display = "none";
-      return;
-    }
-
-    // Opens the app on this player's profile when it's installed; otherwise Google Play.
-    if (openBtn) {
+    // Android with Langas installed: open the app on the friend's profile
+    if (openBtn && id && /Android/i.test(navigator.userAgent)) {
       openBtn.href = "intent://langas.online/u/" + id +
         "#Intent;scheme=https;package=com.langas.app;S.browser_fallback_url=" +
         encodeURIComponent(PLAY) + ";end";
-      if (!/Android/i.test(navigator.userAgent)) openBtn.style.display = "none";
+      openBtn.hidden = false;
     }
-
-    fetch(API + "/u/" + id)
-      .then(function (r) { return r.json(); })
-      .then(function (res) {
-        if (!res || !res.resStatus || !res.player) throw new Error("not found");
-        var p = res.player;
-        nameEl.textContent = p.name || "A Langas player";
-        document.title = (p.name || "A friend") + " invites you to Langas";
-        subEl.textContent = p.levelCode ? (p.levelCode + " · " + (p.levelTitle || "")).toUpperCase() : "LEARNING LATVIAN";
-        avEl.textContent = (p.name || "?").charAt(0).toUpperCase();
-        if (p.avatarUrl) {
-          var img = new Image();
-          img.alt = "";
-          img.onload = function () { avEl.textContent = ""; avEl.appendChild(img); };
-          img.src = p.avatarUrl;
-        }
-        if (statsEl) {
-          statsEl.innerHTML = "";
-          [["CROWNS", p.crowns], ["STREAK", p.streak], ["POINTS", p.points]].forEach(function (s) {
-            if (typeof s[1] !== "number") return;
-            var d = document.createElement("div");
-            d.textContent = s[1].toLocaleString("en");
-            var sm = document.createElement("small");
-            sm.textContent = s[0];
-            d.appendChild(sm);
-            statsEl.appendChild(d);
-          });
-        }
-      })
-      .catch(function () {
-        nameEl.textContent = "Join me on Langas";
-        subEl.textContent = "LEARN LATVIAN TOGETHER";
-      });
   }
 })();

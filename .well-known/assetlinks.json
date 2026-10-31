@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.langas.app",
+      "sha256_cert_fingerprints": [
+        "69:DF:C8:31:AA:11:DD:B6:1F:08:EF:A6:DE:3E:E1:1B:54:8A:B3:77:9D:F5:77:71:61:83:F3:89:5F:CF:21:2E"
+      ]
+    }
+  }
+]
