@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var API = "https://www.eumaps.org/api/langas-web";
+  var API = "/api"; // Netlify proxies /api/* to https://www.eumaps.org/api/langas-web/*
   var PLAY = "https://play.google.com/store/apps/details?id=com.langas.app";
 
   // ── Mobile menu ──────────────────────────────────────────────────

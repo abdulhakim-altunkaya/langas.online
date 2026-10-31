@@ -1,6 +1,13 @@
 [build]
   publish = "."
 
+# All /api/* calls go to the eumaps backend (same domain for the browser: no CORS needed)
+[[redirects]]
+  from = "/api/*"
+  to = "https://www.eumaps.org/api/langas-web/:splat"
+  status = 200
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
