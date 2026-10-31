@@ -1,0 +1,4 @@
+# Invite links: /u/123 shows the invite page (the URL stays the same)
+/u/*    /u.html    200
+# Old privacy link
+/langas-privacy.html    /privacy/    301
