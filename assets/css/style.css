@@ -84,10 +84,10 @@ a { color: inherit; }
 .site-header nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand img { width: 54px; height: 54px; }
-/* App wordmark: black pill, Latvian flag on the left, "Langas" in Momo Trust Display */
-.wordmark { display: inline-flex; align-items: stretch; height: 50px; background: #000; border: 4px solid #000; border-radius: 999px; overflow: hidden; }
-.wm-flag { width: 46px; background: linear-gradient(#9E3039 0 40%, #fff 40% 60%, #9E3039 60% 100%); display: block; }
-.wordmark span { font-family: "Momo", "Nunito", sans-serif; font-size: 28px; line-height: 1; color: var(--bg); display: flex; align-items: center; padding: 0 20px 2px 12px; letter-spacing: .5px; }
+/* Wordmark: "Langas" in Baloo 2, white with a black outline */
+.wordmark { display: inline-flex; align-items: center; }
+.wm-flag { display: none; }
+.wordmark span { font-family: "Baloo", sans-serif; font-weight: 800; font-size: 40px; line-height: 1; padding-top: 6px; letter-spacing: 1px; color: #fff; -webkit-text-stroke: 6px #000; paint-order: stroke fill; }
 .mini-flag { display: inline-block; width: 22px; height: 15px; border: 2px solid #000; border-radius: 3px; background: linear-gradient(#9E3039 0 40%, #fff 40% 60%, #9E3039 60% 100%); vertical-align: -2px; margin-right: 8px; }
 .made { margin-top: 10px; font-size: 16px; }
 .lv-badge { display: inline-block; background: #fff; color: var(--ink); font-family: "Righteous", sans-serif; letter-spacing: .5px; border: 3px solid #000; border-radius: 14px; padding: 3px 12px; margin-right: 12px; transform: rotate(-2deg); }
@@ -207,7 +207,7 @@ a { color: inherit; }
 .form { display: grid; gap: 18px; margin-top: 24px; }
 .form label { font-family: "Righteous", sans-serif; letter-spacing: 1px; display: grid; gap: 8px; }
 .form input, .form textarea, .form select {
-  font: inherit; font-weight: 700; color: var(--ink); background: #fff;
+  font: inherit; font-family: "Nunito", sans-serif; font-weight: 700; letter-spacing: 0; color: var(--ink); background: #fff;
   border: 4px solid #000; border-radius: 18px; padding: 14px 18px; width: 100%;
 }
 .form textarea { min-height: 170px; resize: vertical; }
@@ -232,7 +232,6 @@ a { color: inherit; }
 /* ── Footer ─────────────────────────────────────────────────────── */
 .site-footer { background: var(--ink); color: #fff; padding: 46px 0; }
 .site-footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-.site-footer .wordmark { border-color: #fff; }
 .site-footer nav { display: flex; gap: 24px; flex-wrap: wrap; }
 .site-footer nav a { color: var(--sun); font-family: "Righteous", sans-serif; text-decoration: none; }
 .site-footer nav a:hover { text-decoration: underline; }
@@ -262,7 +261,7 @@ a { color: inherit; }
   .nav-links .gp-item .gp { display: inline-flex; }
   .site-header nav { position: relative; }
   .brand img { width: 44px; height: 44px; } .brand { gap: 8px; }
-  .wordmark { height: 44px; } .wordmark span { font-size: 24px; padding: 0 16px 2px 10px; } .wm-flag { width: 38px; }
+  .wordmark span { font-size: 32px; -webkit-text-stroke-width: 5px; }
   .phone { transform: scale(.9); transform-origin: top center; margin-bottom: -60px; }
   :root { --shadow: 8px 8px 0 #000; --radius: 28px; }
   .feature, .step, .course { padding: 26px; }
